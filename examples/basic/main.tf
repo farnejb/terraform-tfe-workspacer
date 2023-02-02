@@ -5,6 +5,14 @@ terraform {
       version = "0.38.0"
     }
   }
+
+    cloud {
+    organization = "jfarnell-ps-demo"
+
+    workspaces {
+      name = "pmr-workspacer"
+    }
+  }
 }
 
 provider "tfe" {
@@ -12,7 +20,8 @@ provider "tfe" {
 }
 
 module "workspacer" {
-  source = "../.."
+  source = "app.terraform.io/jfarnell-ps-demo/workspacer/tfe"
+  version = "1.0.0"
 
   organization   = var.organization
   workspace_name = "module-workspacer-basic-test"
