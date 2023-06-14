@@ -12,7 +12,8 @@ provider "tfe" {
 }
 
 module "workspacer" {
-  source   = "../.."
+  source  = "app.terraform.io/jfarnell-ps-demo/workspacer/tfe"
+  version = "1.0.1"
   for_each = var.workspaces
 
   organization   = var.organization
